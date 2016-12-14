@@ -107,13 +107,17 @@ $(function() {
 
 	}
 
+	function handleImageResult(result) {
+		publicId = result.public_id;
+		updateDeleteButton(result);
+		updateImage();
+		updateColorInfo(result);
+	}
+
 	function widgetCallback(error, result) {
 		if (error === null) {
 			widget.close();
-			publicId = result[0].public_id;
-			updateDeleteButton(result[0]);
-			updateImage();
-			updateColorInfo(result[0]);
+			handleImageResult(result[0]);
 		} else {
 			console.log(error);
 		}
@@ -130,8 +134,9 @@ $(function() {
 
 	function setup() {
 		var cloudName = 'rich';
+		var uploadPreset = 'qrlbo2ed';
 		var widgetOptions = {
-			upload_preset: 'qrlbo2ed',
+			upload_preset: uploadPreset,
 			cropping: 'server',
 			cropping_aspect_ratio: 1,
 			min_image_width: 200,
@@ -146,6 +151,11 @@ $(function() {
 		widget = cloudinary.createUploadWidget(widgetOptions, widgetCallback);
 		$('#btnUpload').click(btnUploadClick);
 		$('#btnUpdate').click(btnApplyClick);
+		$('#fileUpload').unsigned_cloudinary_upload(
+			uploadPreset, {cloud_name: cloudName}
+		).bind('cloudinarydone', function(e, data) {
+			handleImageResult(data.result);
+		});
 	}
 
 	function main() {
