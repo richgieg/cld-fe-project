@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>widget-frontend</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://widget.cloudinary.com/global/all.js"></script>
+	<script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
+</head>
+<body>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Profile Pic Generator v0.02</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<br>
+								<p>Generate a profile pic using Cloudinary's upload widget and image transformations.</p>
+								<br>
+							</div>
+							<div class="col-md-4">
+								<div class="panel panel-default">
+									<div class="panel-body">
+									<br>
+										<div class="well text-center">
+											<img class="img-responsive" style="margin: 0 auto;" width="200" height="200"><br>
+											<button id="btnUpload" class="btn btn-primary">Upload</button>
+											<button id="btnDelete" class="btn btn-primary" style="display: none;">Delete</button>
+										</div>
+										<div id="colorInfo" class="row" style="display: none;">
+											<div class="col-sm-6 col-md-12">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title">Predominant Colors</h3>
+													</div>
+													<div id="predominantColors" class="panel-body">
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-6 col-md-12">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title">Top Colors</h3>
+													</div>
+													<div id="topColors" class="panel-body">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title">Options</h3>
+									</div>
+									<div class="panel-body">
+										<form class="row">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label for="txtOverlay">Text Overlay:</label>
+													<input type="text" class="form-control" id="txtOverlay">
+												</div>
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label for="txtFontSize">Font Size:</label>
+															<input type="number" class="form-control" id="txtFontSize" value="80">
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label for="txtColor">Color:</label>
+															<input type="color" class="form-control" id="txtColor">
+														</div>	
+													</div>
+													<div class="col-sm-12">
+														<div class="form-group">
+															<label for="selOverlayPosition">Position:</label>
+															<select class="form-control" id="selOverlayPosition">
+																<option>Center</option>
+																<option>North</option>
+																<option>North_East</option>
+																<option>East</option>
+																<option>South_East</option>
+																<option>South</option>
+																<option>South_West</option>
+																<option>West</option>
+																<option>North_West</option>
+															</select>
+														</div>
+													</div>
+												</div>											
+											</div>
+											<div class="col-sm-6">
+												<label for="effects">Effects:</label>
+												<div id="effects" class="well">
+													<div class="checkbox"><label><input type="checkbox" id="cbSepia"> Sepia</label></div>
+													<div class="checkbox"><label><input type="checkbox" id="cbNegate"> Negate</label></div>
+													<div class="checkbox"><label><input type="checkbox" id="cbGrayscale"> Grayscale</label></div>
+													<div class="checkbox"><label><input type="checkbox" id="cbBlackWhite"> Black &amp; White</label></div>
+												</div>
+											</div>
+											<div class="col-sm-12 text-center">
+												<button id="btnUpdate" class="btn btn-primary">Apply</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
